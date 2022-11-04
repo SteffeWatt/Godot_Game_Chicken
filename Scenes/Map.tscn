@@ -12,7 +12,7 @@ position = Vector2( 679, 293 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Chicken" parent="." instance=ExtResource( 1 )]
-speed = 500
+speed = 50
 
 [connection signal="area_entered" from="Chicken" to="Chicken" method="_on_Chicken_area_entered"]
 [connection signal="area_exited" from="Chicken" to="Chicken" method="_on_Chicken_area_exited"]

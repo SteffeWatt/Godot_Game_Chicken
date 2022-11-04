@@ -16,6 +16,7 @@ var lowerClampXBound = 0;
 var lowerClampYBound = 0;
 var upperClampXBound = 0;
 var upperClampYBound = 0;
+var rng = RandomNumberGenerator.new()
 
 
 
@@ -31,11 +32,16 @@ func _ready():
 	inGameTimer.start(3)
 	upperClampXBound = screen_size.x;
 	upperClampYBound = screen_size.y;
+	
+	rng.randomize()
+	
+	position.x = 200
+	position.y = 200
 
 
 
 func do_this():
-	direction = randi() % 4
+	direction = rng.randi_range(1,5)
 
 
 func _process(delta):
