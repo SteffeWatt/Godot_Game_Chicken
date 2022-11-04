@@ -76,3 +76,13 @@ func _process(delta):
 
 #func _process(delta):
 #	pass
+func _on_Chicken_area_entered(area):
+	#position.x = get_node("Player").position.x
+	#Change the position of the chicken to be on the area it is colliding with
+	position.x = area.position.x + 50
+	position.y = area.position.y
+	
+
+func _on_Chicken_area_exited(area):
+	position.x = area.position.x + 50
+	position.y = area.position.y

@@ -14,9 +14,18 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false #Don't know why we do this, wtf
 
-
+#Handles picking up chicken... lol
+func pickUp():
+	canInteract = false
+	#Update the chicken position to be on the player's head, idk how tho
+	
+	
+	
 #function called on loading
 func _ready():
+	#Has the player not in the corner lol
+	position.x = 200
+	position.y = 200
 	screen_size = get_viewport_rect().size
 	#Initialise the player as being able to interact with chickens
 	var canInteract = true
@@ -35,10 +44,10 @@ func _process(delta):
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
 	#Bit for picking up chicken
-	if Input.is_action_pressed("player_interact") && inRange && canInteract:
-		#Call the pick up function
+	if inRange && canInteract:
+		#Call the pick up function and pass the chicken instance
 		pass
-		
+	
 	
 	
 	#Prevents diagonal movement speedhax
@@ -61,8 +70,16 @@ func _process(delta):
 
 #IF THE PLAYER IS NEAR A CHICKEN, LATER UPDATE TO CHECK IF THE AREA IS A CHICKEN OR A DROP-OFF POINT
 func _on_Player_area_entered(area):
+	print(area.get_name())
+	var myTempVar = area.get_name()
+	if myTempVar == "Chicken":
+		print('so true')
+		
+	
+	
+			
 	#If area is equal to chicken then set inRange to true
-	inRange = true
+	
 	#Else set onExit to true
 
 #IF THE PLAYER IS NOT NEAR A CHICKEN, LATER UPDATE TO CHECK IF THE AREA IS A CHICKEN OR A DROP-OFF POINT
@@ -70,3 +87,7 @@ func _on_Player_area_exited(area):
 	#If area is equal to chicken then set inRange to false
 	inRange = false
 	#else set on exit to false
+
+
+func _on_Chicken_area_entered(area):
+	pass # Replace with function body.
