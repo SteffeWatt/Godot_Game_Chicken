@@ -7,12 +7,17 @@ extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
-
-export var speed = 100 # How fast the player will move (pixels/sec).
+var canBeHeld = true
+export var speed = 50 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
 var inGameTimer = Timer.new()
 var direction = 0
-var rng = RandomNumberGenerator.new()
+var lowerClampXBound = 0;
+var lowerClampYBound = 0;
+var upperClampXBound = 0;
+var upperClampYBound = 0;
+
+
 
 
 
@@ -20,28 +25,24 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	screen_size = get_viewport_rect().size
 	inGameTimer.connect("timeout",self,"do_this")
-	
+	inGameTimer.wait_time = 2
 	inGameTimer.one_shot = false
 	add_child(inGameTimer)
-	inGameTimer.start(1.5)
-	rng.randomize()
-	
-	position.x = 800
-	position.y = 300
+	inGameTimer.start(3)
+	upperClampXBound = screen_size.x;
+	upperClampYBound = screen_size.y;
 
 
 
 func do_this():
-	
-	
-	direction = rng.randi_range(1,4)
+	direction = randi() % 4
 
 
 func _process(delta):
 	
 	
 	
-	
+	inGameTimer
 	var velocity = Vector2.ZERO # The player's movement vector.
 	
 	
@@ -75,8 +76,8 @@ func _process(delta):
 		$AnimatedSprite.play()
 		
 		position += velocity * delta
-		position.x = clamp(position.x, 0, screen_size.x)
-		position.y = clamp(position.y, 0, screen_size.y)
+		position.x = clamp(position.x, lowerClampXBound, upperClampXBound)
+		position.y = clamp(position.y, lowerClampYBound, upperClampYBound)
 		
 	else:
 		$AnimatedSprite.stop()
@@ -86,10 +87,21 @@ func _process(delta):
 func _on_Chicken_area_entered(area):
 	#position.x = get_node("Player").position.x
 	#Change the position of the chicken to be on the area it is colliding with
-	position.x = area.position.x + 50
-	position.y = area.position.y
+	var myTempVar = area.get_name()
+	if myTempVar == "DropZone":
+		canBeHeld = false
+		lowerClampXBound = area.position.x  
+		lowerClampYBound = area.position.y
+		upperClampXBound = area.position.x + 330
+		upperClampYBound = area.position.y + 225
+		
+	if myTempVar == "Player" && canBeHeld:
+		position.x = area.position.x + 40
+		position.y = area.position.y
 	
 
 func _on_Chicken_area_exited(area):
-	position.x = area.position.x + 50
-	position.y = area.position.y
+	var myTempVar = area.get_name()
+	if myTempVar == "Player" && canBeHeld:
+		position.x = area.position.x + 40
+		position.y = area.position.y
