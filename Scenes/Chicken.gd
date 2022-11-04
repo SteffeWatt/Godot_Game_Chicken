@@ -12,6 +12,7 @@ export var speed = 100 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
 var inGameTimer = Timer.new()
 var direction = 0
+var rng = RandomNumberGenerator.new()
 
 
 
@@ -23,11 +24,17 @@ func _ready():
 	inGameTimer.one_shot = false
 	add_child(inGameTimer)
 	inGameTimer.start(1.5)
+	rng.randomize()
+	
+	position.x = 800
+	position.y = 300
 
 
 
 func do_this():
-	direction = randi() % 4
+	
+	
+	direction = rng.randi_range(1,4)
 
 
 func _process(delta):
