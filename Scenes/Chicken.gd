@@ -47,16 +47,16 @@ func _process(delta):
 	
 	
 				
-	if direction == 0:
+	if direction == 1:
 		velocity.x += 1
 		
-	if direction == 1:
+	if direction == 2:
 		velocity.x -= 1
 		
-	if direction == 2:
+	if direction == 3:
 		velocity.y -= 1
 		
-	if direction == 3:
+	if direction == 4:
 		velocity.y += 1
 			
 			
