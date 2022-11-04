@@ -8,61 +8,57 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 
-export var speed = 200 # How fast the player will move (pixels/sec).
+export var speed = 50 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
+var inGameTimer = Timer.new()
+var direction = 0
 
 
 
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	inGameTimer.connect("timeout",self,"do_this")
+	inGameTimer.wait_time = 2
+	inGameTimer.one_shot = false
+	add_child(inGameTimer)
+	inGameTimer.start(3)
 
 
+
+func do_this():
+	direction = randi() % 4
 
 
 func _process(delta):
-	var isMoving = false
-	var direction = randi() % 4
-	var randomNymber = randi() % 6
 	
+	
+	
+	inGameTimer
 	var velocity = Vector2.ZERO # The player's movement vector.
 	
-	if direction == 0 && isMoving == false:
-		isMoving = true
-		if randomNymber > 0:
-			velocity.x += 1
-			randomNymber -= delta
-			
-		else:
-			isMoving = false
-			
 	
-	if direction == 1 && isMoving == false:
-		isMoving = true
-		if randomNymber > 0:
-			velocity.x -= 1
-			randomNymber -= delta
-			
-		else:
-			isMoving = false
+				
+	if direction == 0:
+		velocity.x += 1
 		
-	if direction == 2 && isMoving == false:
-		isMoving = true
-		if randomNymber > 0:
-			velocity.y += 1
-			randomNymber -= delta
+	if direction == 1:
+		velocity.x -= 1
+		
+	if direction == 2:
+		velocity.y -= 1
+		
+	if direction == 3:
+		velocity.y += 1
 			
-		else:
-			isMoving = false
 			
-	if direction == 3 && isMoving == false:
-		isMoving = true
-		if randomNymber > 0:
-			velocity.y -= 1
-			randomNymber -=delta
-			
-		else:
-			isMoving = false
+	if velocity.x != 0:
+		$AnimatedSprite.flip_h = velocity.x < 0
+		
+	
+	
+	
+	
 			
 			
 	
