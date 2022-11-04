@@ -8,7 +8,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 
-export var speed = 50 # How fast the player will move (pixels/sec).
+export var speed = 100 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
 var inGameTimer = Timer.new()
 var direction = 0
@@ -19,10 +19,10 @@ var direction = 0
 func _ready():
 	screen_size = get_viewport_rect().size
 	inGameTimer.connect("timeout",self,"do_this")
-	inGameTimer.wait_time = 2
+	
 	inGameTimer.one_shot = false
 	add_child(inGameTimer)
-	inGameTimer.start(3)
+	inGameTimer.start(1.5)
 
 
 
@@ -34,7 +34,7 @@ func _process(delta):
 	
 	
 	
-	inGameTimer
+	
 	var velocity = Vector2.ZERO # The player's movement vector.
 	
 	
