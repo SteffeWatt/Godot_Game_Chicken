@@ -32,3 +32,7 @@ func _process(delta):
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
+	
+	#Flips the character orientation if moving to the left, done to save time xd
+	if velocity.x != 0:
+		$AnimatedSprite.flip_h = velocity.x < 0
