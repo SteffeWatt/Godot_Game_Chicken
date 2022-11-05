@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cbatCut.mp3-3988319056625b7e13b709183ef699b6.mp3str"
+
+[deps]
+
+source_file="res://Assets/cbatCut.mp3"
+dest_files=[ "res://.import/cbatCut.mp3-3988319056625b7e13b709183ef699b6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
