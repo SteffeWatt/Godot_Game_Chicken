@@ -2,25 +2,41 @@ extends Node
 
 export(PackedScene) var mob_scene
 
-
+#define how many chickens we want to spawn
+var chickenNumber = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#Spawn in chickens 
-	var mob = mob_scene.instance()
-	#Set its position
-	mob.position.x = 400
-	mob.position.y = 200
-	#Spawn it
-	add_child(mob)
+	randomize()
+	var screenWidth = 1080
+	var screenHeight = 720
 	
-	var mob2 = mob_scene.instance()
-	mob2.position.x = 200
-	mob2.position.y = 400
-	add_child(mob2)
+	#For loop to spawn in a crap ton of chickens 
+	for i in chickenNumber - 1:
+		var mob = mob_scene.instance()
+		#Set its position
+		mob.position.x = randi() % screenWidth
+		mob.position.y = randi() % screenHeight
+		#Spawn it
+		add_child(mob)
+		
+	
+	#Spawn in chickens 
+	#var mob = mob_scene.instance()
+	#Set its position
+	#mob.position.x = randi() % screenWidth
+	#mob.position.y = randi() % screenHeight
+	#Spawn it
+	#add_child(mob)
+	
+	
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	#check if all of the chickens have been collected
+	if chickenNumber == $DropZone.capturedChickenCount:
+		#print("Winner!")
+		pass
+		
