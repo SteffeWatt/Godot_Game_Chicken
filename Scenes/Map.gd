@@ -37,6 +37,7 @@ func _ready():
 func _process(delta):
 	#check if all of the chickens have been collected
 	if chickenNumber == $DropZone.capturedChickenCount:
+		get_tree().change_scene("res://Scenes/Victory royale.tscn")
 		#print("Winner!")
 		pass
 		
