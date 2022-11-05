@@ -8,7 +8,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 var canBeHeld = true
-export var speed = 50 # How fast the player will move (pixels/sec).
+export var speed = 75 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
 var inGameTimer = Timer.new()
 var direction = 0
