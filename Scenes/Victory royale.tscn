@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/ARIAL.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/suckies =0.jpg" type="Texture" id=2]
 [ext_resource path="res://Assets/Hand over your toes.jpg" type="Texture" id=3]
+[ext_resource path="res://Assets/Rick Astley - Never Gonna Give You Up (Official Music Video)-dQw4w9WgXcQ.mp3" type="AudioStream" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.643137, 0.85098, 0.576471, 1 )
@@ -21,15 +22,15 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1080.0
+margin_bottom = 720.0
 
 [node name="Rows" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1080.0
+margin_bottom = 720.0
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/Rows"]
-margin_right = 1024.0
+margin_right = 1080.0
 margin_bottom = 68.0
 custom_fonts/font = SubResource( 2 )
 text = "YOU WIN! VERY EPIC"
@@ -38,14 +39,18 @@ autowrap = true
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/Rows"]
 margin_top = 72.0
-margin_right = 1024.0
+margin_right = 1080.0
 margin_bottom = 278.0
 texture = ExtResource( 2 )
 stretch_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/Rows"]
 margin_top = 282.0
-margin_right = 1024.0
+margin_right = 1080.0
 margin_bottom = 488.0
 texture = ExtResource( 3 )
 stretch_mode = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
