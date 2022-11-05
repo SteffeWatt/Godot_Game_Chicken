@@ -86,7 +86,7 @@ func _process(delta):
 
 func _on_Chicken_area_entered(area):
 	var myTempVar = area.get_name()
-	if myTempVar == "DropZone":
+	if myTempVar == "DropZone":		
 		canBeHeld = false
 		lowerClampXBound = area.position.x  
 		lowerClampYBound = area.position.y
@@ -96,7 +96,7 @@ func _on_Chicken_area_entered(area):
 	if myTempVar == "Player" && canBeHeld:
 		position.x = area.position.x + 40
 		position.y = area.position.y
-		print('its happening')
+		#print('its happening')
 
 
 func _on_Chicken_area_exited(area):
