@@ -13,7 +13,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7.625, 6.75 )
+extents = Vector2( 11.5, 8.17188 )
 
 [node name="Player" type="Area2D"]
 script = ExtResource( 3 )
@@ -25,8 +25,5 @@ frames = SubResource( 1 )
 animation = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 34, 18 )
+position = Vector2( 37, 17 )
 shape = SubResource( 2 )
-
-[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_Player_area_exited"]
