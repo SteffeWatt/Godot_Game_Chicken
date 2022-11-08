@@ -44,7 +44,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#check if all of the chickens have been collected
-	if chickenNumber == $DropZone.capturedChickenCount && waveNo == 2:
+	if $DropZone.capturedChickenCount == 59:
 		get_tree().change_scene("res://Scenes/Victory royale.tscn")
 		
 		#print("Winner!")
@@ -53,6 +53,7 @@ func _process(delta):
 		chickenNumber = 40;
 		startScene()
 		$WaveTimer.start(30)
+		waveNo = 2
 	
 	
 	$Label.text = "PROTOTYPE DEMO " + str($WaveTimer.time_left)
