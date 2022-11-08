@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/King Crimson Sound Effect-c56YDp2WuRU.mp3-8c42082194656be8f572176a1195da5d.mp3str"
+
+[deps]
+
+source_file="res://Assets/King Crimson Sound Effect-c56YDp2WuRU.mp3"
+dest_files=[ "res://.import/King Crimson Sound Effect-c56YDp2WuRU.mp3-8c42082194656be8f572176a1195da5d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
