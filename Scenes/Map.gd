@@ -22,7 +22,7 @@ func startScene():
 		#Spawn it
 		add_child(mob)
 	
-	$WaveTimer.start(25)
+	$WaveTimer.start(45)
 	
 
 func _ready():
@@ -50,9 +50,9 @@ func _process(delta):
 		#print("Winner!")
 		#pass
 	if chickenNumber == $DropZone.capturedChickenCount && waveNo == 1:
-		chickenNumber = 200;
+		chickenNumber = 40;
 		startScene()
-		$WaveTimer.start(10)
+		$WaveTimer.start(30)
 	
 	
 	$Label.text = "PROTOTYPE DEMO " + str($WaveTimer.time_left)
